@@ -1,4 +1,6 @@
 import React from "react";
+import imagenInsta from "../img/insta.jpeg";
+import imagenTw from "../img/tw.png";
 
 const Footer = () => {
   return (
@@ -11,19 +13,14 @@ const Footer = () => {
               href="#!"
               role="button"
             >
-              <img
-                src="img/insta.jpeg"
-                alt="Instagram"
-                width="30"
-                height="30"
-              />
+              <img src={imagenInsta} alt="Instagram" width="30" height="30" />
             </a>
             <a
               className="btn btn-outline-light btn-floating m-1"
               href="#!"
               role="button"
             >
-              <img src="img/tw.png" alt="Twitter" width="30" height="30" />
+              <img src={imagenTw} alt="Twitter" width="30" height="30" />
             </a>
           </div>
           <div className="col-auto">

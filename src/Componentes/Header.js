@@ -1,4 +1,5 @@
 import React from "react";
+import imagenLogo from "../img/descarga.jpeg";
 
 const Header = () => {
   return (
@@ -6,7 +7,7 @@ const Header = () => {
       <div className="container-fluid">
         <div className="navbar-brand d-flex align-items-center">
           <img
-            src="img/football-157930.svg"
+            src={imagenLogo}
             className="rounded-circle me-2"
             height="40"
             loading="lazy"
