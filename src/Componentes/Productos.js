@@ -3,6 +3,7 @@ import axios from "axios";
 
 const Productos = () => {
   const [productos, setProductos] = useState([]);
+  const [carrito, setCarrito] = useState({}); // Objeto para almacenar las cantidades en el carrito
 
   useEffect(() => {
     axios
@@ -22,9 +23,25 @@ const Productos = () => {
       .catch((error) => console.error("Error fetching productos:", error));
   }, []);
 
+  const handleAddToCart = (id) => {
+    setCarrito((prevState) => ({
+      ...prevState,
+      [id]: (prevState[id] || 0) + 1,
+    }));
+  };
+
+  const handleRemoveFromCart = (id) => {
+    if (carrito[id] > 0) {
+      setCarrito((prevState) => ({
+        ...prevState,
+        [id]: prevState[id] - 1,
+      }));
+    }
+  };
+
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Camisetas</h2>
+      <h2 className="text-center mb-4">Productos</h2>
       <div className="row">
         {productos.map((producto) => (
           <div key={producto.id} className="col-md-4 mb-4">
@@ -34,9 +51,21 @@ const Productos = () => {
                 <h5 className="card-title">{producto.nombre}</h5>
                 <p className="card-text">{producto.descripcion}</p>
                 <p className="card-text">Precio: {producto.precio}€</p>
-                <a href="#" className="btn btn-primary">
-                  Añadir al carrito
-                </a>
+                <div className="d-flex justify-content-between align-items-center">
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={() => handleRemoveFromCart(producto.id)}
+                  >
+                    -
+                  </button>
+                  <span>{carrito[producto.id] || 0}</span>
+                  <button
+                    className="btn btn-outline-primary"
+                    onClick={() => handleAddToCart(producto.id)}
+                  >
+                    +
+                  </button>
+                </div>
               </div>
             </div>
           </div>
