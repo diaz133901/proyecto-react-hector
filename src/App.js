@@ -1,11 +1,13 @@
 import React from "react";
 import Header from "./Componentes/Header";
 import Footer from "./Componentes/Footer";
+import Productos from "./Componentes/Productos";
 
 const App = () => {
   return (
     <div>
       <Header />
+      <Productos />
       <Footer />
       <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
