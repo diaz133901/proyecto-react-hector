@@ -1,5 +1,6 @@
 import React from "react";
 import imagenLogo from "../img/descarga.jpeg";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,6 +12,7 @@ const Header = () => {
             className="rounded-circle me-2"
             height="40"
             loading="lazy"
+            alt="Logo"
           />
           <h5 className="pt-1 mb-0">Camisetas de fútbol retro</h5>
         </div>
@@ -31,7 +33,9 @@ const Header = () => {
         >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <button className="btn btn-outline-light me-2">Carrito</button>
+              <Link to="/carrito" className="btn btn-outline-light me-2">
+                Carrito
+              </Link>
             </li>
             <li className="nav-item">
               <button className="btn btn-outline-light">Iniciar sesión</button>

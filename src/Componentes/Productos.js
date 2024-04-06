@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Productos = () => {
+const Productos = ({ carrito, setCarrito }) => {
   const [productos, setProductos] = useState([]);
-  const [carrito, setCarrito] = useState({}); // Objeto para almacenar las cantidades en el carrito
 
   useEffect(() => {
     axios
