@@ -61,7 +61,7 @@ const Pedidos = () => {
                   const producto = productos.find(
                     (prod) => prod.id === productoId
                   );
-                  if (producto) {
+                  if (producto && cantidad > 0) {
                     return (
                       <li key={productoId}>
                         <strong>{producto.nombre}</strong> - Cantidad:{" "}
@@ -69,7 +69,7 @@ const Pedidos = () => {
                       </li>
                     );
                   } else {
-                    return null; // Manejar casos donde el producto no se encuentra
+                    return null; // No renderizar el producto si no tiene cantidad
                   }
                 }
               )}
