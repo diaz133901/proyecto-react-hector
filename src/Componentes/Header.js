@@ -38,6 +38,11 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link to="/pedidos" className="btn btn-outline-light me-2">
+                Pedidos
+              </Link>
+            </li>
+            <li className="nav-item">
               <button className="btn btn-outline-light">Iniciar sesión</button>
             </li>
           </ul>

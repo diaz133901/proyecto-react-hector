@@ -4,6 +4,7 @@ import Header from "./Componentes/Header";
 import Footer from "./Componentes/Footer";
 import Productos from "./Componentes/Productos";
 import Carrito from "./Componentes/Carrito";
+import Pedidos from "./Componentes/Pedidos";
 
 const App = () => {
   const [carrito, setCarrito] = useState({});
@@ -19,6 +20,7 @@ const App = () => {
             element={<Productos carrito={carrito} setCarrito={setCarrito} />}
           />
           <Route path="/carrito" element={<Carrito carrito={carrito} />} />
+          <Route path="/pedidos" element={<Pedidos />} />
         </Routes>
         <Footer />
         <link
