@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Productos = ({ carrito, setCarrito }) => {
-  const [productos, setProductos] = useState([]);
-
+const Productos = ({ carrito, setCarrito, productos, setProductos }) => {
   useEffect(() => {
     axios
       .get(

@@ -8,6 +8,7 @@ import Pedidos from "./Componentes/Pedidos";
 
 const App = () => {
   const [carrito, setCarrito] = useState({});
+  const [productos, setProductos] = useState([]);
 
   return (
     <Router>
@@ -17,9 +18,26 @@ const App = () => {
           <Route
             exact
             path="/"
-            element={<Productos carrito={carrito} setCarrito={setCarrito} />}
+            element={
+              <Productos
+                carrito={carrito}
+                setCarrito={setCarrito}
+                productos={productos}
+                setProductos={setProductos}
+              />
+            }
           />
-          <Route path="/carrito" element={<Carrito carrito={carrito} />} />
+          <Route
+            path="/carrito"
+            element={
+              <Carrito
+                carrito={carrito}
+                setCarrito={setCarrito}
+                productos={productos}
+                setProductos={setProductos}
+              />
+            }
+          />
           <Route path="/pedidos" element={<Pedidos />} />
         </Routes>
         <Footer />

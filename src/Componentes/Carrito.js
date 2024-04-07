@@ -1,6 +1,6 @@
 import React from "react";
 
-const Carrito = ({ carrito }) => {
+const Carrito = ({ carrito, setCarrito, productos, setProductos }) => {
   return (
     <div className="container mt-5">
       <h2>Carrito</h2>
