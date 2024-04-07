@@ -6,7 +6,8 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
-        <div className="navbar-brand d-flex align-items-center">
+        {/* Enlace para ir a la página principal */}
+        <Link to="/" className="navbar-brand d-flex align-items-center">
           <img
             src={imagenLogo}
             className="rounded-circle me-2"
@@ -15,7 +16,7 @@ const Header = () => {
             alt="Logo"
           />
           <h5 className="pt-1 mb-0">Camisetas de fútbol retro</h5>
-        </div>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

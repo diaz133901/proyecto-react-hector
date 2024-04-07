@@ -57,13 +57,11 @@ const Pedidos = () => {
 
   const marcarPedidoComoEliminado = async (pedidoId) => {
     try {
-      // Realizar la solicitud de actualización para cambiar Eliminado de 0 a 1
       await axios.put(
         `https://react-1-cde17-default-rtdb.europe-west1.firebasedatabase.app/pedidos/${pedidoId}/Eliminado.json`,
         1
       );
 
-      // Filtrar los pedidos activos para excluir el pedido marcado como eliminado
       const updatedPedidos = pedidos.filter((pedido) => pedido.id !== pedidoId);
       setPedidos(updatedPedidos);
     } catch (error) {
@@ -81,11 +79,13 @@ const Pedidos = () => {
             onClick={() => toggleExpandPedido(pedido.id)}
             style={{ cursor: "pointer" }}
           >
-            <span>Pedido {parseInt(pedido.id) + 1}</span>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span>Pedido {parseInt(pedido.id) + 1}</span>
+            </div>
             <button
               className="btn btn-danger"
               onClick={(e) => {
-                e.stopPropagation(); // Evitar que se expanda al hacer clic en el botón
+                e.stopPropagation();
                 marcarPedidoComoEliminado(pedido.id);
               }}
             >
