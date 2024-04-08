@@ -7,6 +7,10 @@ const Carrito = ({ carrito, setCarrito, productos }) => {
   const [numeroTarjeta, setNumeroTarjeta] = useState("");
   const [pin, setPin] = useState("");
 
+  const isEmpty = (obj) => {
+    return Object.keys(obj).length === 0;
+  };
+
   const guardarPedido = async () => {
     try {
       const productosPedido = {};
@@ -63,9 +67,11 @@ const Carrito = ({ carrito, setCarrito, productos }) => {
         })}
       </ul>
       <p>Total: {calcularPrecioTotal(carrito, productos)} € </p>
-      <button className="btn btn-primary" onClick={handleGuardarPedido}>
-        Realizar Pedido
-      </button>
+      {!isEmpty(carrito) && (
+        <button className="btn btn-primary" onClick={handleGuardarPedido}>
+          Realizar Pedido
+        </button>
+      )}
 
       {modalVisible && (
         <div
