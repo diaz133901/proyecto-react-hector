@@ -1,19 +1,26 @@
 import React from "react";
 import axios from "axios";
 
-const Carrito = ({ carrito, setCarrito }) => {
+const Carrito = ({ carrito, setCarrito, productos }) => {
   const guardarPedido = async (carrito) => {
     try {
       const productosPedido = {};
+      let totalPrecio = 0;
 
       Object.keys(carrito).forEach((idProducto) => {
         const cantidad = carrito[idProducto];
-        productosPedido[idProducto] = cantidad;
+        const producto = productos.find((p) => p.id === idProducto);
+
+        if (producto) {
+          productosPedido[idProducto] = cantidad;
+          totalPrecio += parseInt(producto.precio) * cantidad;
+        }
       });
 
       const nuevoPedido = {
         Eliminado: 0,
         productos: productosPedido,
+        totalPrecio: totalPrecio,
       };
 
       const response = await axios.post(
@@ -42,9 +49,25 @@ const Carrito = ({ carrito, setCarrito }) => {
           </li>
         ))}
       </ul>
+      <p>Total: ${calcularPrecioTotal(carrito, productos)}</p>
       <button onClick={handleGuardarPedido}>Guardar Pedido</button>
     </div>
   );
+};
+
+const calcularPrecioTotal = (carrito, productos) => {
+  let total = 0;
+
+  Object.keys(carrito).forEach((idProducto) => {
+    const cantidad = carrito[idProducto];
+    const producto = productos.find((p) => p.id === idProducto);
+
+    if (producto) {
+      total += parseInt(producto.precio) * cantidad;
+    }
+  });
+
+  return total;
 };
 
 export default Carrito;
