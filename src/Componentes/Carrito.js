@@ -20,7 +20,6 @@ const Carrito = ({ carrito, setCarrito, productos }) => {
       const nuevoPedido = {
         Eliminado: 0,
         productos: productosPedido,
-        totalPrecio: totalPrecio,
       };
 
       const response = await axios.post(
@@ -43,13 +42,21 @@ const Carrito = ({ carrito, setCarrito, productos }) => {
     <div className="container mt-5">
       <h2>Carrito</h2>
       <ul>
-        {Object.keys(carrito).map((idProducto) => (
-          <li key={idProducto}>
-            Producto ID: {idProducto}, Cantidad: {carrito[idProducto]}
-          </li>
-        ))}
+        {Object.keys(carrito).map((idProducto) => {
+          const cantidad = carrito[idProducto];
+          const producto = productos.find((p) => p.id === idProducto);
+
+          if (producto && cantidad > 0) {
+            return (
+              <li key={idProducto}>
+                <strong>{producto.nombre}</strong> - Cantidad: {cantidad}
+              </li>
+            );
+          }
+          return null;
+        })}
       </ul>
-      <p>Total: ${calcularPrecioTotal(carrito, productos)}</p>
+      <p>Total: {calcularPrecioTotal(carrito, productos)} €</p>
       <button onClick={handleGuardarPedido}>Guardar Pedido</button>
     </div>
   );
