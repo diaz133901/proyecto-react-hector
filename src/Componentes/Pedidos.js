@@ -36,7 +36,7 @@ const Pedidos = () => {
             id: key,
             ...data[key],
           }))
-          .filter((pedido) => pedido.Eliminado === 0); // Filtrar solo pedidos no eliminados
+          .filter((pedido) => pedido.Eliminado === 0);
         setPedidos(pedidosArray);
       } catch (error) {
         console.error("Error fetching pedidos:", error);
@@ -72,7 +72,7 @@ const Pedidos = () => {
   return (
     <div className="container mt-5">
       <h2>Pedidos</h2>
-      {pedidos.map((pedido) => (
+      {pedidos.map((pedido, index) => (
         <div key={pedido.id} className="card mb-3">
           <div
             className="card-header d-flex justify-content-between"
@@ -80,7 +80,7 @@ const Pedidos = () => {
             style={{ cursor: "pointer" }}
           >
             <div style={{ display: "flex", alignItems: "center" }}>
-              <span>Pedido {parseInt(pedido.id) + 1}</span>
+              <span>Pedido {index + 1}</span>{" "}
             </div>
             <button
               className="btn btn-danger"
