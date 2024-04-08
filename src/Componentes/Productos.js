@@ -10,7 +10,7 @@ const Productos = ({ carrito, setCarrito, productos, setProductos }) => {
       .then((response) => {
         const data = response.data;
         const productosArray = Object.keys(data)
-          .filter((key) => key !== "0") // Filtrar el producto con id 0
+          .filter((key) => key !== "0")
           .map((key) => ({
             id: key,
             ...data[key],
@@ -43,7 +43,11 @@ const Productos = ({ carrito, setCarrito, productos, setProductos }) => {
         {productos.map((producto) => (
           <div key={producto.id} className="col-md-4 mb-4">
             <div className="card">
-              {/* <img src={producto.imagen} className="card-img-top" alt={producto.nombre} /> */}
+              <img
+                src={producto.imagen}
+                className="card-img-top"
+                alt={producto.nombre}
+              />
               <div className="card-body">
                 <h5 className="card-title">{producto.nombre}</h5>
                 <p className="card-text">{producto.descripcion}</p>
