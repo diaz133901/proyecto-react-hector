@@ -56,11 +56,8 @@ const Carrito = ({ carrito, setCarrito, productos }) => {
           return null;
         })}
       </ul>
-      <p>Total: ${calcularPrecioTotal(carrito, productos)}</p>
-      <button
-        className="btn btn-primary" // Clases de Bootstrap para un botón azul
-        onClick={handleGuardarPedido}
-      >
+      <p>Total: {calcularPrecioTotal(carrito, productos)} € </p>
+      <button className="btn btn-primary" onClick={handleGuardarPedido}>
         Realizar Pedido
       </button>
     </div>
