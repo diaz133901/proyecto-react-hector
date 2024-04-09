@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      {" "}
       <div className="container-fluid">
-        {/* Enlace para ir a la página principal */}
         <Link to="/" className="navbar-brand d-flex align-items-center">
           <img
             src={imagenLogo}
