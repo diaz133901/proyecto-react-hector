@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useCart } from "./CartContext";
 
-const Carrito = ({ carrito, setCarrito, productos }) => {
+const Carrito = ({ productos }) => {
+  const { carrito, setCarrito } = useCart();
   const [modalVisible, setModalVisible] = useState(false);
   const [direccion, setDireccion] = useState("");
   const [numeroTarjeta, setNumeroTarjeta] = useState("");
@@ -27,7 +29,7 @@ const Carrito = ({ carrito, setCarrito, productos }) => {
       });
 
       const nuevoPedido = {
-        eliminado: 0,
+        Eliminado: 0,
         productos: productosPedido,
       };
 

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useCart } from "./CartContext";
 
-const Productos = ({ carrito, setCarrito, productos, setProductos }) => {
+const Productos = ({ productos, setProductos }) => {
+  const { carrito, setCarrito } = useCart();
   useEffect(() => {
     axios
       .get(

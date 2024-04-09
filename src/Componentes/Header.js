@@ -43,9 +43,6 @@ const Header = () => {
                 Pedidos
               </Link>
             </li>
-            <li className="nav-item">
-              <button className="btn btn-outline-light">Iniciar sesión</button>
-            </li>
           </ul>
         </div>
       </div>
