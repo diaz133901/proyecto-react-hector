@@ -9,7 +9,6 @@ import "./App.css";
 import { CartProvider } from "./Componentes/CartContext";
 
 const App = () => {
-  const [carrito, setCarrito] = useState({});
   const [productos, setProductos] = useState([]);
 
   return (
@@ -24,8 +23,6 @@ const App = () => {
                 path="/"
                 element={
                   <Productos
-                    carrito={carrito}
-                    setCarrito={setCarrito}
                     productos={productos}
                     setProductos={setProductos}
                   />
@@ -34,12 +31,7 @@ const App = () => {
               <Route
                 path="/carrito"
                 element={
-                  <Carrito
-                    carrito={carrito}
-                    setCarrito={setCarrito}
-                    productos={productos}
-                    setProductos={setProductos}
-                  />
+                  <Carrito productos={productos} setProductos={setProductos} />
                 }
               />
               <Route path="/pedidos" element={<Pedidos />} />
